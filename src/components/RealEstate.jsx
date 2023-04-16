@@ -17,9 +17,9 @@ console.log(hotels.hotels)
 
   const navigate = useNavigate();
 
-  const toDetailsPage =(hotel)=>{
-      console.log(hotel)
-navigate('/rooms',{state:{"id":hotel}});
+  const toDetailsPage =(hotel, location)=>{
+      console.log(hotel, location)
+navigate('/rooms',{state:{"id":hotel, "propertyLocation":location}});
   }
 
   return (
@@ -27,7 +27,7 @@ navigate('/rooms',{state:{"id":hotel}});
     {hotels.hotels.map((hotel) => {
       return (
       
-        <div onClick={()=>toDetailsPage(hotel.property_name)} className="flex flex-col md:flex-row space-x-0 md:space-x-4 my-8 neumorphic-card">
+        <div onClick={()=>toDetailsPage(hotel.property_name, hotel.location)} className="flex flex-col md:flex-row space-x-0 md:space-x-4 my-8 neumorphic-card">
           <img className="w-full md:w-64 bg-blue-200 h-64 object-cover" src={hotel.image} />
 
           <div className="flex-cols">

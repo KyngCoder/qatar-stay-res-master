@@ -35,8 +35,8 @@ import axios from 'axios';
 const Rooms = () => {
 
 const location = useLocation();
-const {id} = location.state
-console.log(id)
+const {id, propertyLocation} = location.state
+console.log(id, propertyLocation)
 
 
 const [associatedRooms, setAssociatedRooms] = useState(rooms.filter((room) => room.property_name === id));
@@ -63,7 +63,7 @@ const navigate = useNavigate();
 
 const navigateToDetails =(index)=>{
     console.log(index)
-navigate('/room/detail',{state:{"id":index}});
+navigate('/room/detail',{state:{"id":index, "propertyLocation": propertyLocation}});
 }
 
   return(

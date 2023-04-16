@@ -67,15 +67,7 @@ console.log(hotels)
         </li>{" "}
        
         
-        <li onClick={()=> {
-          setIsActive(4)
-          setType("Home")
-        }}>
-          {" "}
-          <a href="#" className={`${isActive === 4 ? "flex justify-center bg-white rounded-full shadow duration-700 text-indigo-900 py-4" : "flex justify-center py-4"}`}>
-            Home
-          </a>{" "}
-        </li>{" "}
+        
       </ul>
 
       <div className="flex">

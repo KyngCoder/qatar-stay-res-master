@@ -2,6 +2,11 @@
 
 import { useState } from "react";
 
+import vid2 from '../assets/video/vid2.mp4'
+import vid3 from '../assets/video/vid3.mp4'
+import vid4 from '../assets/video/vid4.mp4'
+import vid5 from '../assets/video/vid5.mp4'
+
 export default function Banner(){
  
 
@@ -12,7 +17,8 @@ export default function Banner(){
     if (num === 1) {
       return (
         <video
-          src="https://drive.google.com/uc?export=download&id=15HmCvIv6TXOGwvhkQPI-8kXovlCvRluQ"
+          src={vid4}
+        
           autoPlay
           muted
           loop
@@ -22,7 +28,7 @@ export default function Banner(){
     } else if (num === 2) {
       return (
         <video
-          src="https://www.pexels.com/video/a-couple-sitting-on-the-bed-looking-at-the-city-view-by-the-window-4775026/"
+          src={vid2}
           autoPlay
           muted
           loop
@@ -33,7 +39,7 @@ export default function Banner(){
     if (num === 3) {
       return (
         <video
-          src="hhttps://drive.google.com/uc?export=download&id=19I4UF_jSfqFvwJPsGXxOj_0i1uWt8Oxl"
+          src={vid3}
           autoPlay
           muted
           loop
@@ -44,7 +50,7 @@ export default function Banner(){
     if (num === 4) {
       return (
         <video
-          src="https://drive.google.com/uc?export=download&id=15HmCvIv6TXOGwvhkQPI-8kXovlCvRluQ"
+          src={vid5}
           autoPlay
           muted
           loop
@@ -54,7 +60,7 @@ export default function Banner(){
     } else {
       return (
         <video
-          src="Video by Pavel Danilyuk from Pexels: https://www.pexels.com/video/a-couple-sitting-on-the-bed-looking-at-the-city-view-by-the-window-4775026/"
+          src=  "https://drive.google.com/uc?export=download&id=15HmCvIv6TXOGwvhkQPI-8kXovlCvRluQ"
           autoPlay
           muted
           loop

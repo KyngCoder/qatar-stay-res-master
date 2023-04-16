@@ -1,9 +1,6 @@
-
 import {useState, useEffect} from 'react';
 
 import axios from 'axios'
-
-
 
 export default function Signup() {
 
@@ -18,12 +15,13 @@ export default function Signup() {
         email_address: "",
         password_confirm: "",
         agree: false,
-        phone_number: "8763130347",
-        language: "english"
+        phone_number: "",
+        language: ""
 
     })
 
     const [countries, setCountries] = useState([])
+    const [languages, setLanguages] = useState([])
 
     const submitForm = async () => {
 
@@ -39,6 +37,7 @@ export default function Signup() {
                 })
             }catch(error) {
                 console.error(error)
+                alert("Error with data")
             }
 
         }else {
@@ -54,18 +53,63 @@ export default function Signup() {
         fetch("https://restcountries.com/v2/all")
         .then(response => response.json())
         .then( data => {
-            const result = data.map( country => {
+
+
+            var countriesList = [];
+            var languageList = [];
+
+            data.map( (country, index) => {
+                
+                const nationality = country.demonym
+                const language = country.languages[0].name
+
+                countriesList.push(
+                    nationality
+                )
+
+                languageList.push(language)
                 // console.log(country)
+                // const nationality = country.demonym
+                // 
+                // // console.log("language is ",language)
+                // // const currency = country.currencies[0].symbol
+                // // console.log("Currency is" , currency)
+                // return (
+                //     <option 
+                //         value={nationality}
+                //         key={index}
+                //     >
+                //         {nationality}
+                //     </option>
+                // )
+            })
+
+            let uniqueLanguages = [...new Set(languageList)]
+
+            uniqueLanguages = uniqueLanguages.sort((a, b) => a.localeCompare(b))
+
+            setCountries( countriesList.map( (country, index) => {
                 return (
-                    <option>
-                        {country.name}
+                    <option value={country} key={index}>
+                        {country}
                     </option>
                 )
             })
+        )
+
+        setLanguages(
+            uniqueLanguages.map( (language, index) => {
+                return (
+                    <option value={language} key={index}>
+                        {language}
+                    </option>
+                )
+            })
+        )
 
             // console.log(result)
 
-            setCountries(result)
+            // setCountries(result)
             // console.log("DATAT")
 
             
@@ -141,10 +185,24 @@ export default function Signup() {
                 </div>
 
                 <div className="form-input">
+                    <label htmlFor="phone_number">Phone Number</label>
+                    <input type="phone_number" className='w-48' name="phone_number" id="phone_number" onChange={handleChange} required/>
+                </div>
+
+                <div className="form-input">
                     <label htmlFor="firstname">Nationality</label>
                     <select name="nationality" className='p-2 ml-2' id="" onChange={handleChange}>
 
                      {countries}
+
+                    </select>
+                </div>
+
+                <div className="form-input">
+                    <label htmlFor="language">Language</label>
+                    <select name="language" className='p-2 ml-2' id="language" onChange={handleChange}>
+
+                     {languages}
 
                     </select>
                 </div>
