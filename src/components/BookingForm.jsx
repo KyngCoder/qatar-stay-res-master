@@ -38,6 +38,11 @@ const BookingForm = () => {
     alert("You have succefully book your dream stay");
   }
 
+// useEffect( () => {
+
+//   alert("Page loaded")
+// }, [] )
+
   useEffect(() => {
     if (guests && checkIn && checkOut) setshow(true);
     calculateTotalPrice();

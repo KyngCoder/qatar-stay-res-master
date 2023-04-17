@@ -1,10 +1,14 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import axios from 'axios'
+// import jwt from "jsonwebtoken";
+import { useJwt } from "react-jwt";
 
 export default function Login() {
 
     const [formData, setFormData] = useState({})
+    const [valid, setValid] = useState(true)
+    var response = ""
 
 const navigate = useNavigate()
     const handleChange =(e) => {
@@ -26,18 +30,28 @@ const navigate = useNavigate()
 //   "heslop321"
     const loginIn = async () => {
         try{
-            await axios.post("http://localhost:5000/login", 
-            formData
-        )
+            response = await axios.post("http://10.44.16.58:5000/login", 
+            formData)
+            setValid(true)
+            alert("Logged In Successfully")
+
+            console.log(response.data)
+            // save the loginstate
+            localStorage.setItem('token', response.data.token)
+            // console.log(jwt.decode(response.data.token))
+            // console.log(useJwt(response.data.token).decodedToken)
+
         navigate('/')
         }catch (err) {
             console.log(err);
+            alert("Error loging in")
+            setValid(false)
          
           }
     }
 
     return (
-        <div className="mt-32 container mx-auto w-96 p-6 border-2 shadow-lg">
+        <div className="mt-32 container mx-auto w-96 p-6 border-2 shadow-lg mb-12">
             <h1 className="text-blue-500 text-3xl text-center mb-6 font-semibold">Login</h1>
             <p className="text-gray-700 text-center mb-6">Welcome back esteemed traveller! <br />Please login so we can assist you in booking your <b>dream stay </b> in <b>Qatar!</b> </p>
 
@@ -59,7 +73,9 @@ const navigate = useNavigate()
                     onChange={handleChange}
 
                 />
-
+                {
+                    !valid && <span className="text-red-500 underline text-sm text-center block mb-4">Username or password is incorrect</span>
+                }
                 <button
                 onClick={loginIn}
                     className="primary-color py-2 px-6 text-white font-bold rounded-lg block mx-auto transition hover:scale-110 shadow-lg"
@@ -73,7 +89,7 @@ const navigate = useNavigate()
 
                 <hr className="border-gray-400 mb-4" />
 
-                <p className="text-center">Dont have an account? <Link to="/signup"> SignUp</Link> </p>
+                <p className="text-center">Dont have an account? <Link to="/signup"> <span className="text-blue-800 underline">SignUp</span></Link> </p>
 
 
             </div>

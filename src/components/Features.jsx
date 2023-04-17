@@ -55,7 +55,7 @@ export default function Features() {
 
                     <Link to='/signup'>
                         <button
-                            className="py-2 px-6 bg-blue-300 shadow-lg text-white font-semibold hover:rotate-4 transition rounded-lg mx-auto block mt-6"
+                            className="py-2 px-6 bg-blue-600 uppercase  shadow-lg text-white font-semibold hover:rotate-4 transition rounded-lg mx-auto block mt-12"
                         >
                             Signup
                         </button>

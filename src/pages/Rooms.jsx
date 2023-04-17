@@ -42,7 +42,7 @@ console.log(id, propertyLocation)
 const [associatedRooms, setAssociatedRooms] = useState(rooms.filter((room) => room.property_name === id));
 
 const getRooms = async() => {
-  const room = await axios.get("http://localhost:5000/room/")
+  const room = await axios.get("http://10.44.16.58:5000/room/")
   const selectedRoom = room.data.filter(room => room.property_name === id)
   console.log(selectedRoom)
   setAssociatedRooms(selectedRoom)
@@ -71,7 +71,7 @@ navigate('/room/detail',{state:{"id":index, "propertyLocation": propertyLocation
     <section>
 
       <h2 className='text-blue-400 mt-32 font-bold text-3xl text-center'>Your Ideal Room Awaits you in Qatar</h2>
-      <p className='text-center px-32'>Discover Unforgettable Accommodations for Your Dream Stay in Qatar. Our hotel offers luxurious and thoughtfully appointed rooms, providing the perfect escape for an unforgettable stay in Qatar.</p>
+      <p className='text-left md:text-center p-6 md:px-32'>Discover Unforgettable Accommodations for Your Dream Stay in Qatar. Our hotel offers luxurious and thoughtfully appointed rooms, providing the perfect escape for an unforgettable stay in Qatar.</p>
 
     <div className="grid  grid-cols-1 place-items-center md:grid-cols-3  lg:grid-cols-4 mx-8">
 

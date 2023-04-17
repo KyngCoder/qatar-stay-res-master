@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import properties from "../api/properties";
 
-
 import Filter from "../components/Filter";
 import RealEstate from "../components/RealEstate";
 import axios from "axios";
+// import { useJwt } from "react-jwt";
 
 
 const Hotels = () => {
@@ -17,13 +17,14 @@ const Hotels = () => {
   const [isActive,setIsActive] = useState(1)
 
   const getHotels = async() => {
-    const property = await axios.get("http://localhost:5000/properties")
+    const property = await axios.get("http://10.44.16.58:5000/properties")
     const allProperties = property.data
     setHotels(allProperties.filter(list => list.property_type === type ))
   }
 
   // setHotels(properties.listings.filter((property) => property.type === type))
   useEffect(()=>{
+    // console.log(useJ(localStorage.getItem('token')))
     getHotels()
   },[type])
   

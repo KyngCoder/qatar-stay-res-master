@@ -7,17 +7,17 @@ export default function Testimonials() {
         {
             url: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             name: "Anisha Li",
-            content: ' “Manage has supercharged our team’s workflow. The ability to maintain visibility on larger milestones at all times keeps everyone motivated.”'
+            content: 'Qatar Stay made booking my Doha trip in 2020 easy and affordable. The website was user-friendly and customer support was responsive.'
         },
         {
             url: "https://images.pexels.com/photos/157661/young-woman-shooting-model-157661.jpeg?auto=compress&cs=tinysrgb&w=600",
             name: "Ali Brave",
-            content: ' “Best travel management sysyem ever. Qatar Stay has helped me find the best and cost-effective villa in Qatat ”'
+            content: 'Thanks to Qatar Stay, my family vacation to Qatar was a breeze in 2020. User-friendly website and great hotel options.'
         },
         {
             url: "https://newprofilepic2.photo-cdn.net//assets/images/article/profile.jpg",
-            name: "Richard Watts",
-            content: ' “Manage allows us to provide structure and process. It keeps us organized and focused. I can’t stop recommending them to everyone I talk to!”'
+            name: "Anna-Maria Morgan",
+            content: 'Qatar Stay was efficient and helpful in booking my business trip to Qatar in 2020. Clear confirmation email and responsive customer support'
         },
         
     ]
@@ -39,7 +39,7 @@ export default function Testimonials() {
     })
 
     return (
-        <section className="w-full p-12 mt-6">
+        <section className="w-full md:p-12 p-4 mt-6">
             <h2 className="text-3xl font-bold text-center mb-6">What They've Said</h2>
 
             
@@ -53,7 +53,7 @@ export default function Testimonials() {
 
                 
            
-                <button className="bg-blue-500 py-2 px-6 rounded-md text-white text-xl mx-auto mt-12">Get Started</button>
+                <button className="bg-blue-500 py-2 px-6 rounded-md text-white text-xl mx-auto mt-0 md:mt-12">Get Started</button>
             </section>
         </section>
     )

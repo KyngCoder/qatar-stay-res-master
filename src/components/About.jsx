@@ -3,7 +3,7 @@ import React from 'react'
 const About = () => {
   return (
     <section className="bg-white mt-32 container mx-auto p-8">
-    <div className="max-w-7xl mx-auto py-16  sm:px-6 lg:py-24 lg:px-8">
+    <div className="max-w-7xl mx-auto py-0  sm:px-6 lg:py-24 lg:px-8">
       <div className="lg:grid lg:grid-cols-2 lg:gap-8">
         <div>
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
@@ -14,7 +14,7 @@ const About = () => {
           </p>
         </div>
         <div className="mt-12 lg:mt-0">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
+          <h3 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">Our Mission</h3>
           <p className="mt-4 text-lg text-gray-500">
             Our mission is to provide our clients with the highest level of service and luxury travel experiences. We aim to be the leading travel company in Qatar by offering a personalized approach to each of our clients, and by providing them with the best selection of hotels, villas, and other accommodations in Qatar. We strive to exceed our clients' expectations and make their trip to Qatar truly unforgettable.
           </p>
@@ -23,7 +23,7 @@ const About = () => {
     </div>
 
     <div>
-        <h3 className='text-5xl text-center font-bold mb-12'>Our Story</h3>
+        <h3 className='text-3xl font-extrabold text-gray-900 sm:text-4xl'>Our Story</h3>
 
         <div className="flex gap-4 mb-12">
           <div className="md:w-3/5 w-full">

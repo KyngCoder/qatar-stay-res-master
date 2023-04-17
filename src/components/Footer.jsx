@@ -25,9 +25,9 @@ export default function Footer() {
     const socialIcons = images.map( (image, index) => {
 
         return (
-            <>
+            <span key={index}>
                 {image}
-            </>
+            </span>
         )
     })
 
@@ -38,12 +38,12 @@ export default function Footer() {
     const res2 = links(navLinks2)
 
     return (
-        <footer className="text-white py-12 ">
+        <footer className="text-white p-4 md:py-12 ">
             <div className="container mx-auto flex justify-between flex-col md:flex-row gap-6">
-                <div className="flex flex-col justify-between">
-                    <img src="src/assets/images/LOGO.png" alt="Manage Logo" width="128px" />
+                <div className="flex flex-col justify-between items-center">
+                    <img src="src/assets/images/LOGO.png" alt="Qatar Stay Logo" width="128px" />
 
-                    <div className="flex space-x-6">
+                    <div className="flex space-x-6 justify-center ">
                         {socialIcons}
                     </div>
                 
@@ -51,7 +51,7 @@ export default function Footer() {
                 </div>
 
                 <div>
-                    <ul className="space-y-3">
+                    <ul className="space-y-3 text-center md:text-left">
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/book">Book Stay</Link></li>
                         <li><Link to="/articles">Articles</Link></li>
@@ -59,7 +59,7 @@ export default function Footer() {
                     </ul>
                 </div>
                 <div>
-                    <ul className="space-y-3">
+                    <ul className="space-y-3 text-center md:text-left">
                         <li> <Link to='/appartments'>Apartments </Link> </li>
                         <li> <Link to='/signup'>SignUp </Link> </li>
                         <li> <Link to='/villas'>Villas </Link> </li>

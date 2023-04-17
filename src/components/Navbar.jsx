@@ -600,21 +600,19 @@ const Navbar = () => {
         <div id="google_translate_element"></div>
         </li>
 
-       
+        <li className="fade flex ">
+            <Link to="/login">
+              <button
+              className="primary__button "
+              href="#"
+              >
+              Login
+              </button>
+            </Link>
+        </li> 
  
 
- <li className="fade flex ">
-
-
-<Link to="/book">
-<button
-  className="primary__button "
-  href="#"
->
-  Login
-</button>
-</Link>
-</li> 
+ 
     
 
       </ul>

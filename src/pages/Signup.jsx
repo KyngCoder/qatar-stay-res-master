@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
-
 import axios from 'axios'
+import validator from 'validator';
 
 export default function Signup() {
 
@@ -20,12 +20,60 @@ export default function Signup() {
 
     })
 
+    const [isFormCompleted, setIsFormCompleted] = useState(true)
+    const [termsViewed, setTermsViewed] = useState(false)
     const [countries, setCountries] = useState([])
     const [languages, setLanguages] = useState([])
+    const [validData, setValidData] = useState(false)
+
+    // check all values are entered
+    function allValuesNotEmpty(obj) {
+        for (var key in obj) {
+          if (obj.hasOwnProperty(key)) {
+            if (obj[key] === '') {
+              return false;
+            }
+          }
+        }
+        return true;
+    }
+
+    // Validation function using validator.js
+
+    function validateAll() {
+        const valid = false
+
+        if( !(validator.isAlpha(formData.first_name) && validator.isAlpha(formData.last_name)) ) {
+            alert("First name and Last name should only contain letters")
+        }
+        if( !validator.isEmail(formData.email_address)) {
+            alert("Please enter a valid email address")
+        }
+
+        if(     !validator.isMobilePhone(formData.phone_number)) {
+            alert("Please enter a valid phone number")
+        }
+
+        if( !validator.isStrongPassword(formData.password)) {
+            alert("Please enter a strong password. Password must at least have 1 lowercase, 1 uppercase, at least 8 chars, 1 number and 1 symbol ")
+        }
+        
+    }
 
     const submitForm = async () => {
 
+        validateAll()
+
+        if(!termsViewed) {
+            alert("You must at least view the terms and conditions once!")
+            
+            return
+        }
+        console.log("terms ", termsViewed)
+
         const {password, password_confirm} = formData
+
+
         // check if password fields match
 
         if(password === password_confirm) {
@@ -121,6 +169,18 @@ export default function Signup() {
         
         const {name, value, type, checked} = e.target
 
+        let allFilled = false
+        // const keys = formData.keys()
+        let count = 0
+
+        allFilled = allValuesNotEmpty(formData)
+        console.log(allFilled)
+
+        if(allFilled) {
+            setIsFormCompleted(true)
+            alert("ALL FILLED")
+        }
+
 
         setFormData( (prev) => {
 
@@ -140,7 +200,7 @@ export default function Signup() {
             }    
         } )
 
-
+        console.log(!(!formData.agree && isFormCompleted))
         console.log(formData)
     }
 
@@ -154,7 +214,7 @@ export default function Signup() {
                 
                 <div className="form-input">
                     <label htmlFor="first_name">First Name</label>
-                    <input type="text" placeholder='your first name' name="first_name" id="first_name" onChange={handleChange} pattern="[a-z]" />
+                    <input type="text" placeholder='your first name' name="first_name" id="first_name" onChange={handleChange}  />
                 </div>
 
                 <div className="form-input">
@@ -181,12 +241,12 @@ export default function Signup() {
 
                 <div className="form-input">
                     <label htmlFor="dob">D.O.B.</label>
-                    <input type="date" className='w-48' name="date_of_birth" id="dob" onChange={handleChange}/>
+                    <input type="date" className='w-48' name="date_of_birth" min="1923-01-01" max="2005-12-31" id="dob" onChange={handleChange}/>
                 </div>
 
                 <div className="form-input">
                     <label htmlFor="phone_number">Phone Number</label>
-                    <input type="phone_number" className='w-48' name="phone_number" id="phone_number" onChange={handleChange} required/>
+                    <input type="phone_number" className='w-48' name="phone_number" id="phone_number" onChange={handleChange}/>
                 </div>
 
                 <div className="form-input">
@@ -224,9 +284,9 @@ export default function Signup() {
                     <input type="password" name="password_confirm" placeholder="confirm password" id="password_confirm" onChange={handleChange}/>
                 </div>
 
-                <div className="flex items-center mt-2 md:-mt-8">
+                <div className="flex items-center mt-2 md:-mt-2">
                     <input type="checkbox" name="agree" id="agree" onChange={handleChange}/>
-                    <label htmlFor="agree" className='ml-8'> I agree to Terms and Conditions</label>
+                    <label htmlFor="agree" className='ml-8 ' > I am at least 18 years of age and I have read, accepted and agreed to the <a onClick={() => setTermsViewed(true)} href="Terms.txt" target='blank' className='text-blue-900 underline font-bold'>terms and conditions</a></label>
                 </div>
 
             
@@ -234,9 +294,10 @@ export default function Signup() {
             </div>
 
            
+           
             <button
                 className="bg-blue-500 py-3 px-6 rounded-full text-white block mx-auto disabled:bg-gray-300 text-2xl"
-                disabled={!formData.agree}
+                disabled={!(formData.agree && isFormCompleted)}
                 onClick = {submitForm}
             >
                 SignUp

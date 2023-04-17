@@ -14,7 +14,7 @@ export default function BannerCTA() {
                 </h2>
 
                 <Link  to='/book'>
-                    <button className="bg-blue-500/40 py-2 px-6 scale-150 text-white font-semibold text-xl">
+                    <button className="bg-blue-500/40 py-2 px-6 scale-150 hidden md:block text-white font-semibold text-xl">
                         Book Now
                     </button>
                 </Link>
