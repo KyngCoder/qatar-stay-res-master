@@ -38,10 +38,11 @@ const navigate = useNavigate()
             console.log(response.data)
             // save the loginstate
             localStorage.setItem('token', response.data.token)
+            localStorage.setItem('userID', response.data.userId)
             // console.log(jwt.decode(response.data.token))
             // console.log(useJwt(response.data.token).decodedToken)
 
-        navigate('/')
+        navigate('/dashboard')
         }catch (err) {
             console.log(err);
             alert("Error loging in")

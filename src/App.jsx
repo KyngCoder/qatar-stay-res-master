@@ -23,6 +23,7 @@ import Footer from './components/Footer'
 import Rooms from './pages/Rooms'
 
 import RoomsDetails from './pages/RoomDetails'
+import Dashboard from './pages/Dashboard'
 
 export default function App() {
   return (
@@ -59,6 +60,8 @@ export default function App() {
           <Route path="/login" element={ <Login />} />
 
           <Route path="/room/detail" element={<RoomsDetails />} />
+
+          <Route path="/dashboard" element={<Dashboard />} />
           
         </Routes>
       <Footer />

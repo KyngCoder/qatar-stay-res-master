@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios'
 import validator from 'validator';
+import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
 
@@ -25,6 +26,8 @@ export default function Signup() {
     const [countries, setCountries] = useState([])
     const [languages, setLanguages] = useState([])
     const [validData, setValidData] = useState(false)
+
+    const navigate = useNavigate()
 
     // check all values are entered
     function allValuesNotEmpty(obj) {
@@ -79,9 +82,11 @@ export default function Signup() {
         if(password === password_confirm) {
 
             try {
-                await axios.post('http://localhost:5000/createUser', formData)
+                await axios.post('http://10.44.16.58:5000/createUser', formData)
                 .then( ()=> {
                     console.log("Success")
+                    alert("Successfully signed up, COngrats")
+                    navigate('/login')
                 })
             }catch(error) {
                 console.error(error)
@@ -178,7 +183,7 @@ export default function Signup() {
 
         if(allFilled) {
             setIsFormCompleted(true)
-            alert("ALL FILLED")
+            // alert("ALL FILLED")
         }
 
 
