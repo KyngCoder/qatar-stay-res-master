@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
+import axios from "axios";
+
 const BookingForm = () => {
   const location = useLocation();
   const { id } = location.state;
@@ -30,11 +32,36 @@ const BookingForm = () => {
     setTotalPrice(totalPrice);
   }
 
+  async function addBooking() {
+
+    const bookingData = {
+      room_id : id.id,
+      user_id: userID,
+      num_guests: guests,
+      check_in: checkIn,
+      check_out: checkOut,
+      cost: totalPrice,
+    }
+
+    try {
+      const response = await axios.post('/bookings', bookingData)
+
+    }catch(err){
+      console.error(err)
+      alert("Error adding booking details")
+    }
+
+
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     calculateTotalPrice();
     // Submit form data to server or perform other actions
     console.log(guests, checkIn, checkOut, totalPrice);
+
+
+    
     alert("You have succefully book your dream stay");
   }
 
@@ -117,6 +144,7 @@ const BookingForm = () => {
         <button
           className="py-2 px-4
            primary-color font-bold mt-4 rounded-md text-2xl text-white"
+           onClick={addBooking}
         >
           Book Now
         </button>

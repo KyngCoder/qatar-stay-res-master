@@ -48,6 +48,7 @@ export default function Signup() {
 
         if( !(validator.isAlpha(formData.first_name) && validator.isAlpha(formData.last_name)) ) {
             alert("First name and Last name should only contain letters")
+            
         }
         if( !validator.isEmail(formData.email_address)) {
             alert("Please enter a valid email address")
@@ -85,7 +86,7 @@ export default function Signup() {
                 await axios.post('http://10.44.16.58:5000/createUser', formData)
                 .then( ()=> {
                     console.log("Success")
-                    alert("Successfully signed up, COngrats")
+                    alert("Successfully signed up, Congrats")
                     navigate('/login')
                 })
             }catch(error) {

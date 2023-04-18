@@ -40,7 +40,7 @@ const RoomsDetails = () => {
   const navigate = useNavigate();
 
   const getRoom = async () => {
-    const response = await axios.get("http://localhost:5000/room/");
+    const response = await axios.get("http://10.44.16.58:5000/room/");
     const room = response.data.find((room) => room.id === id);
     setSelectedRoom(room);
   };
